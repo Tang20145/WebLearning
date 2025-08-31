@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatgpt提供的页面代码</title>
+</head>
+<body>
+    <h1>选择查询条件</h1>
+
+    <form id="queryForm">
+        <label for="category">选择类别:</label>
+        <select id="category" name="category">
+            <option value="all">全部</option>
+            <option value="electronics">电子产品</option>
+            <option value="clothing">服装</option>
+            <option value="books">书籍</option>
+        </select>
+
+        <button type="submit">查询</button>
+    </form>
+
+    <h2>查询结果:</h2>
+    <div id="results"></div>
+
+    <script>
+        // 获取表单和结果显示区域
+        const form = document.getElementById('queryForm');
+        const resultsDiv = document.getElementById('results');
+
+        // 监听表单提交事件
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault();  // 防止表单刷新页面
+
+            // 获取用户选择的查询条件
+            const category = document.getElementById('category').value;
+
+            // 发送查询请求到后端（假设后端API为 /query）
+            try {
+                const response = await fetch(`http://your-backend-api/query?category=${category}`);
+                const data = await response.json();
+
+                // 显示查询结果
+                if (data.length > 0) {
+                    resultsDiv.innerHTML = '<ul>' + data.map(item => `<li>${item.name} - ${item.price}</li>`).join('') + '</ul>';
+                } else {
+                    resultsDiv.innerHTML = '没有找到相关结果。';
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = '查询失败，请稍后再试。';
+            }
+        });
+    </script>
+</body>
+</html>

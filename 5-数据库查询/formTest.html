@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- action：表单提交的url -->
+    <form action="/" method="get">
+        <!-- label 元素不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性。如果您在 label 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。 -->
+        <label for="password">密码=></label>
+        <!-- type 属性定义了输入框的类型，id 属性用于关联 <label> 元素，name 属性用于标识表单字段。 -->
+        <input type="password" id="password" name="pswd">
+        <label for="password"><=密码</label>
+
+        <br>
+
+        <label for="tag">类型：</label>
+        <select name="tag" id="tag">
+            <option value="drama">剧情</option>
+            <option value="sci-fi">科幻</option>
+        </select>
+
+        <br>
+
+        <input type="submit" value="Value">
+        <button type="submit">提交</button>
+    </form>
+</body>
+</html>
